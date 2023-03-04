@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'home',
     'authentication',
 
-    "corsheaders", #
+    # "corsheaders", #
 ]
 
 MIDDLEWARE = [
