@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from home.views import view_trendings_results, index
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ def register(request):
        
        user =  User.objects.create_user(username=request.POST["username"], email=request.POST["email"], password=request.POST["password"])
        login(request, user)   
-       return HttpResponse("success")
+       return redirect(login_view)
     else:
         return render(request, "authentication/register.html")
 
@@ -28,9 +29,10 @@ def login_view(request):
        else:
             return HttpResponse("wrong username or pass") 
 
-       return HttpResponse("success")
+       return redirect(index)
     else:
         return render(request, "authentication/login.html")
+
 
 def logout_view(request):
     return HttpResponse("logged out successfully")

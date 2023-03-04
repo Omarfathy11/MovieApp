@@ -3,6 +3,7 @@ import requests
 from django.http.response import JsonResponse
 from .models import Comment
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponse
 
@@ -30,6 +31,7 @@ def search(request):
         "data": data.json(),
         "type": request.GET.get("type")
         })
+
 
 
 def index(request):
